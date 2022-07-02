@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    <title>PT.Telkom Indonesia </title>
+</head>
+
+<body>
+    <div class="container">
+        <header>Pendaftaran PT.Telkom Indonesia</header>
+
+        <form action="#" name="myForm" method="POST">
+            <div class="form first">
+                <div class="details personal">
+                    <span class="title">Identitas Diri</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Nama Lengkap</label>
+                            <input type="text" name="Nama" placeholder="Masukan Nama Lengkap" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Nomer Handphone</label>
+                            <input type="text" name="Nomor" placeholder="Masukan Nomer Handphone" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Email</label>
+                            <input type="email" name="Email" placeholder="Masukan Email" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Pendidikan</label>
+                            <select name="Pendidikan" required>
+                                <option disabled selected>Pilih Pendidikan</option>
+                                <option>S1</option>
+                                <option>S2</option>
+                                <option>S3</option>
+                            </select></required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Asal Universitas</label>
+                            <input type="text" name="Universitas" placeholder="Masukan Asal Universitas" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Bidang Didaftarkan</label>
+                            <select name="Bidang" required>
+                                <option disabled selected>Pilih Bidang</option>
+                                <option>Front And</option>
+                                <option>Backend</option>
+                                <option>Software Architect</option>
+                                <option>Quality Assurance</option>
+                                <option>Document Engineer</option>
+                                <option>Android Developer</option>
+                                <option>iOS Developer</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Pengalaman Kerja</label>
+                            <select name="Pengalaman" required>
+                                <option disabled selected>Pilih Pengalaman Kerja</option>
+                                <option>5 Tahun</option>
+                                <option>6 Tahun</option>
+                                <option>7 Tahun</option>
+                                <option>8 Tahun</option>
+                                <option>9 Tahun</option>
+                                <option>>10 Tahun</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="details ID">
+
+                    <button class="nextBtn" onclick="validate()">
+                        <span class="btnText">Next</span>
+                        <i class="uil uil-navigator"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="form second">
+                <div class="details address">
+                    <span class="title">Data Pendukung</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Background Sekolah</label>
+                            <input type="text" id="Backgound" placeholder="Masukan Background Sekolah">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Sertifikat Internasional</label>
+                            <input type="text" id="Sertifikat" placeholder="Masukan link sertifikat ">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Portofolio</label>
+                            <input type="link" id="portofolio" placeholder="Masukan link Portofolio">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Upload CV</label>
+                            <input type="file" id="Upload Cv" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="buttons">
+                        <div class="backBtn">
+                            <i class="uil uil-navigator"></i>
+                            <span class="btnText">Back</span>
+                        </div>
+
+                        <a href="https://smktelkom-pwt.sch.id" class="nextBtn">Submit</a>
+
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.querySelector("form"),
+            nextBtn = form.querySelector(".nextBtn"),
+            backBtn = form.querySelector(".backBtn"),
+            allInput = form.querySelectorAll(".first input");
+
+
+        nextBtn.addEventListener("click", () => {
+            allInput.forEach(input => {
+                if (input.value != "") {
+                    form.classList.add('secActive');
+                } else {
+                    form.classList.remove('secActive');
+                }
+            })
+        })
+
+        backBtn.addEventListener("click", () => form.classList.remove('secActive'));
+
+        // validation form //
+        function validate() {
+
+            if (document.myForm.Nama.value == "") {
+                alert("Masukan Nama Lengkap Anda !!");
+                document.myForm.Nama.focus();
+                return false;
+            }
+
+            if (document.myForm.Email.value == "") {
+                alert("Masukan Email Anda dengan Benar !!");
+                document.myForm.Email.focus();
+                return false;
+            }
+
+            if (document.myForm.Nomor.value == "" || isNaN(document.myForm.Nomor.value) ||
+                document.myForm.Nomor.value.length != 10) {
+
+                alert("Masukan Nomor Telpon yang Valid");
+                document.myForm.Nomor.focus();
+                return false;
+
+            }
+
+            if (document.myForm.Universitas.value == "") {
+                alert("Masukan Universitas Anda");
+                document.myForm.Univeristas.focus();
+                return false;
+            }
+
+            if (document.myForm.Bidang.value == "-1") {
+                alert("Masukan Bidang Minat Anda, Isi dengan 1 Bidang");
+                return false;
+            }
+
+            if (document.myForm.Pengalaman.value == "-1") {
+                alert("Masukan Lama Pengalaman Kerja Anda");
+                return false;
+            }
+
+            if (document.myForm.Pendidikan.value == "-1") {
+                alert("Masukan Pendidikan Anda");
+                return false;
+            }
+            return (true);
+        }
+    </script>
+
+</body>
+
+</html>
